@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Me Perdonash?.. ❤️</title>
+  <style>
+    /* ESTILOS (CSS): Para que se vea bonito y centrado */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #65f0d2 0%, #42eee5 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 380px;
+      width: 85%;
+    }
+
+    h1 {
+      color: #000e0a;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #btn-si {
+      background-color: #3eecc1;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(255, 75, 114, 0.4);
+    }
+
+    #btn-si:hover {
+      transform: scale(1.1);
+    }
+
+    #btn-no {
+      background-color: #e0e0e0;
+      color: #333;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .mensaje-amor {
+      animation: fadeIn 1s ease-in;
+    }
+
+    p {
+      color: #555;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ESTRUCTURA (HTML) -->
+  <div class="card">
+    <h1 id="pregunta">¿Quieres ser el amor de mi vida por siempre? 💖</h1>
+
+    <div class="btn-group" id="contenedorBotones">
+      <button id="btn-si">¡SÍ!</button>
+      <button id="btn-no">No</button>
+    </div>
+
+    <!-- Mensaje secreto que aparece al dar clic en SÍ -->
+    <div id="respuesta" class="hidden mensaje-amor">
+      <h2>¡Gracias!</h2>
+      <p>
+        No soy buena en esto pero queria hacer el intento, un detalle.
+        Gracias por todo bb, te amo un buen, perdon por todo lo malo que eh hecho, empecemos de nuevo, dejame demostrarte todo el amor que te tengo, desde una forma mas madura, yo realmente quiero que esto funcione, quiero que seamos felices juntos.
+        
+        Eres lo mas maravilloso que me ah pasado, un hombre muy lindo, muy guapo,sexy, romatico divertido e inteligente, te admiro bastante.
+        te amo❤️
+      </p>
+    </div>
+  </div>
+
+  <!-- ACCIÓN (JavaScript): La magia interactiva -->
+  <script>
+    const btnNo = document.getElementById('btn-no');
+    const btnSi = document.getElementById('btn-si');
+    const contenedorBotones = document.getElementById('contenedorBotones');
+    const respuesta = document.getElementById('respuesta');
+    const pregunta = document.getElementById('pregunta');
+
+    // 1. JavaScript para mover el botón "No" cuando intenta tocarlo
+    function huirBoton() {
+      // Calcula posiciones aleatorias dentro de la pantalla
+      const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 40);
+      const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 40);
+
+      btnNo.style.position = 'fixed';
+      btnNo.style.left = `${x}px`;
+      btnNo.style.top = `${y}px`;
+    }
+
+    // Funciona si pasa el mouse por encima o si intenta tocarlo en pantalla táctil (celular)
+    btnNo.addEventListener('mouseover', huirBoton);
+    btnNo.addEventListener('touchstart', huirBoton);
+
+    // 2. JavaScript cuando presiona "SÍ"
+    btnSi.addEventListener('click', () => {
+      contenedorBotones.classList.add('hidden');
+      pregunta.classList.add('hidden');
+      btnNo.style.display = 'none'; // Desaparece el botón "No" por completo
+      respuesta.classList.remove('hidden'); // Muestra la carta romántica
+    });
+  </script>
+
+</body>
+</html>
